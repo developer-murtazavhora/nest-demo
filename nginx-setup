@@ -1,0 +1,17 @@
+server {
+    server_name nest-demo.internetofweb.com;
+    index index.html index.htm;
+    access_log /var/log/nginx/nest-demo.log;
+    error_log  /var/log/nginx/nest-demo-error.log error;
+    
+    underscores_in_headers on;
+
+    location / {
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header Host $http_host;
+        proxy_pass http://localhost:8083;
+        proxy_redirect off;
+    }
+}
