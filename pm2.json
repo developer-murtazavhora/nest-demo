@@ -1,0 +1,26 @@
+{
+  "apps": [
+    {
+      "name": "nest_demo",
+      "script": "./dist/main.js",
+      "max_memory_restart": "4G",
+      "instances": "max",
+      "exec_mode": "cluster_mode",
+      "ignore_watch": [
+        "node_modules",
+        "uploads"
+      ],
+      "exp_backoff_restart_delay": 100,
+      "autorestart": true,
+      "env": {
+        "NODE_ENV": "development"
+      },
+      "env_testing": {
+        "NODE_ENV": "testing"
+      },
+      "env_production": {
+        "NODE_ENV": "production"
+      }
+    }
+  ]
+}
